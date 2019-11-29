@@ -1,0 +1,54 @@
+<van-tabs active="{{ active }}">
+  <van-tab title="手机登录">
+<view >
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="phone-o" size="40rpx" />
+  </view>
+  <view class="name">手机号</view>
+  <input placeholder="请输入手机号" value="{{phone}}" bindblur="getPhone"></input>
+</view>
+  <view wx:if="{{!phoneLock}}" class="correct">请输入正确的手机号</view>
+</view>
+  <view>
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="eye-o" size="40rpx" />
+  </view>
+  <view class="name">密码</view>
+  <input placeholder="请输入密码" type="password" value="{{password}}" bindblur="getPassword"></input>
+</view>
+<view wx:if="{{!passwordLock}}" class="correct">密码长度请在6-16位</view>
+</view>
+  </van-tab>
+  <van-tab title="邮箱登录">
+  <view>
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="ecard-pay" size="40rpx" />
+  </view>
+  <view class="name">邮箱</view>
+  <input placeholder="请输入邮箱" value="{{mail}}" bindblur="getMail"></input>
+</view>
+<view wx:if="{{!mailLock}}" class="correct">请输入正确的邮箱</view>
+</view>
+<view>
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="eye-o" size="40rpx" />
+  </view>
+  <view class="name">密码</view>
+  <input placeholder="请输入密码" type="password" value="{{passwords}}" bindblur="getPasswords"></input>
+</view>
+<view wx:if="{{!passwordsLock}}" class="correct">密码长度请在6-16位</view>
+</view>
+  </van-tab>
+</van-tabs>
+<view class="button">
+<view class="login" bindtap="login">立即登录</view>
+<view class="register" bindtap="register">立即注册</view>
+</view>

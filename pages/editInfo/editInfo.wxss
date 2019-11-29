@@ -1,0 +1,28 @@
+/* pages/editInfo/editInfo.wxss */
+.all{
+  width: 90%;
+  margin: auto
+}
+.register{
+   background: #FF976A;
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+  margin: auto;
+  width: 18%
+}
+.head{
+  display: flex;
+  justify-content: space-between;
+  color: #07C160;
+  margin: 30rpx
+}
+.row{
+  padding: 20rpx
+}
+.color{
+  background: #e2e2e2
+}
+.confirm{
+  margin-top: 50rpx
+}

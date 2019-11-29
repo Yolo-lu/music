@@ -1,0 +1,42 @@
+<view class="pop">
+<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+  <view>
+    <view class="head">
+      <view class="left">
+        <view wx:if="{{active===0}}" class="order">
+          <image src="../../images/orders.png" bindtap="order" class="l-img"></image>
+          <view>顺序播放</view>
+        </view>
+        <view wx:if="{{active===2}}" class="order">
+          <image src="../../images/onlys.png" bindtap="only"></image>
+          <view>单曲循环</view>
+        </view>
+        <view wx:if="{{active===1}}" class="order">
+          <image src="../../images/randoms.png" bindtap="random"></image>
+          <view>随机播放</view>
+        </view>
+        <view>（{{songList.length}}）</view>
+      </view>
+      <view class="right">
+      <view><image src="../../images/collect.png"></image></view>
+      <view>收藏全部</view>
+      <view><image src="../../images/delete.png"></image></view>
+      </view>
+    </view>
+    <view class="list" wx:for="{{songList}}" wx:key="{{index}}">
+      <view class="row">
+        <view class="left1 {{indexs===index? 'red':''}}">
+        <view wx:if="{{indexs===index}}">
+        <image src="../../images/horn.png" class="horn"></image>
+        </view>
+        <view class="name">{{item.name}}</view>
+        <view class="ar {{indexs===index? 'red':''}}">-{{item.ar[0].name}}</view>
+        </view>
+        <view class="right1">
+        <van-icon name="cross" color="#999" />
+        </view>
+      </view>
+    </view>
+  </view>
+</van-popup>
+</view>

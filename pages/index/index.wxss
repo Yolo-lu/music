@@ -1,0 +1,64 @@
+.all{
+  width: 90%;
+  margin: auto
+}
+.head{
+  display: flex;
+  line-height: 72rpx;
+  margin:20rpx 0 ;
+  font-size: 34rpx
+}
+.search{
+  width: 60%;
+  height: 60rpx;
+  padding-top: 10rpx;
+  background: #f4f4f4;
+  position: relative;
+  text-align: center;
+  border-radius: 20rpx;
+  margin: 0 20rpx;
+  font-weight: normal
+}
+.so{
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+  display: block;
+  width: 28rpx;
+  height: 28rpx
+}
+.head .music{
+  width: 44rpx;
+  height: 32px;
+  margin-left: 16rpx
+}
+.manu{
+  display: flex;
+  justify-content: space-between;
+  margin: 20rpx 0;
+}
+.img{
+  padding: 10rpx 0;
+  display: block;
+  width: 50rpx;
+  height: 50rpx;
+  margin: auto
+}
+.recommend{
+  border-top: 2rpx solid #f4f4f4;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  padding: 20rpx 0；
+}
+.list{
+  line-height: 60rpx
+}
+.sqear{
+  padding: 10rpx 25rpx;
+  background: #e2e2e2;
+  border-radius: 30rpx
+}
+.lists{
+  display: flex
+}

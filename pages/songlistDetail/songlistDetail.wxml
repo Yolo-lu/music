@@ -1,0 +1,99 @@
+<view>
+  <view class="songList">
+    <view class="detail">
+      <view class="head">
+        <view class="left">
+          <image class="r-img" src="{{data.playlist.coverImgUrl}}"></image>
+          <view class="play">
+            <image src="../../images/bofang.png" class="p-img"></image>
+            <view wx:if="{{data.playlist.playCount>10000}}">{{data.playlist.playCounts}}万</view>
+            <view wx:else>{{data.playlist.playCount}}</view>
+          </view>
+        </view>
+        <view class="right">
+          <view class="name">{{data.playlist.name}}</view>
+          <view class="blogger">
+            <view>
+              <image src="{{data.playlist.creator.avatarUrl}}" class="b-img"></image>
+            </view>
+            <view class="nickname">{{data.playlist.creator.nickname}}</view>
+            <view class="icon">
+              <van-icon name="arrow" />
+            </view>
+          </view>
+          <view style="display:flex">
+            <view class="description">{{data.playlist.description}}</view>
+            <view>
+              <view class="icon">
+                <van-icon name="arrow" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="manu">
+        <view class="icon-s">
+          <view>
+            <image src="../../images/pinglun.png" class="img"></image>
+          </view>
+          <view class="icon-name">{{data.playlist.commentCount}}</view>
+        </view>
+        <view class="icon-s">
+          <view>
+            <image src="../../images/zhuanfa.png" class="img" style="width:40rpx;height:40rpx"></image>
+          </view>
+          <view icon-name>{{data.playlist.shareCount}}</view>
+        </view>
+        <view class="icon-t">
+          <view>
+            <image src="../../images/download.png" class="img"></image>
+          </view>
+          <view icon-name>下载</view>
+        </view>
+        <view class="icon-s">
+          <view>
+            <image src="../../images/select.png" class="img" style="width:40rpx;height:40rpx"></image>
+          </view>
+          <view icon-name>多选</view>
+        </view>
+      </view>
+    </view>
+    <view class="playlist">
+      <view class="title">
+        <view class="left1">
+          <view>
+            <image src="../../images/bofang1.png" class="a-img"></image>
+          </view>
+          <view class="playAll">播放全部</view>
+          <view class="sum">（共{{data.playlist.trackCount}}首）</view>
+        </view>
+        <view class="right1">
+          <van-icon name="plus" /> 收藏（{{data.playlist.subscribedCount}}）
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list1">
+    <view wx:for="{{data.playlist.tracks}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+      <view class="left2">
+        <view class="index">{{index+1}}</view>
+        <view class="songName">
+          <view class="names" >{{item.name}}</view>
+          <view class="bottem">
+          <view class="only">独家</view>
+          <view class="only">SQ</view>
+          <view class="sum">{{item.ar[0].name}}-{{item.al.name}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="right2">
+      <view bindtap="play" data-item="{{item.id}}">
+      <image src="../../images/bofang2.png" class="p-img"></image>
+      </view>
+      <view>
+      <image src="../../images/more.png" class="p-img"></image>
+      </view>
+      </view>
+    </view>
+  </view>
+</view>

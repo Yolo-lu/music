@@ -1,0 +1,27 @@
+<view class="all">
+  <van-cell-group>
+    <van-field value="{{ nickname }}" placeholder="{{user.nickname}}" placeholder-style="text-align:right" icon="arrow" label="昵称" border="{{ false }}" bind:confirm="confirmName" />
+    <van-field value="{{ gender }}" placeholder="{{gender}}" placeholder-style="text-align:right" icon="arrow" label="性别" border="{{ false }}" bind:focus="showGender" />
+    <van-popup show="{{ showGender }}" position="bottom" custom-style="height: 30%;" bind:close="onClose">
+      <view class="head">
+        <view class="left" bindtap="cancelGender"> 取消</view>
+        <view class="right" bindtap="confirmGender"> 确认</view>
+      </view>
+      <view class="list" wx:for="{{sex}}" wx:key="{{index}}">
+        <view bindtap="chooseGender" data-item="{{item.gender}}" class="row {{flag===item.gender?'color':''}}">{{item.name}}</view>
+      </view>
+    </van-popup>
+    <van-field value="{{ showbirth }}" placeholder="{{showbirth}}" placeholder-style="text-align:right" icon="arrow" label="生日" border="{{ false }}" bind:focus="showBirthday" />
+    <van-popup show="{{ showBirthday }}" position="bottom" custom-style="height: 50%;" >
+      <van-datetime-picker type="date" value="{{ currentDate }}" max-date="{{ currentDate }}" min-date="{{minDate}}" formatter="{{ formatter }}" bind:confirm="confirmTime" bind:cancel="cancelTime"/>
+    </van-popup>
+    <van-field value="{{seeprovince}}{{ seecity }}" placeholder="{{seeprovince}}{{ seecity }}" placeholder-style="text-align:right" icon="arrow" label="城市" border="{{ false }}" bind:focus="changeCity" />
+    <van-popup show="{{ showcity }}" position="bottom" custom-style="height: 50%;" >
+      <van-area area-list="{{ areaList }}" bind:confirm="confirmCity" bind:cancel="cancelCity" />
+    </van-popup>
+    <van-field value="{{ signature }}" placeholder-style="text-align:right" icon="arrow" label="签名" border="{{ false }}" bind:confirm="confirmSign" placeholder="你还没有签名，赶快设置吧！"/>
+  </van-cell-group>
+</view>
+<view class="confirm">
+<view class="register " bindtap="register" bindtap="confirm">确认修改</view>
+</view>

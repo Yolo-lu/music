@@ -1,0 +1,76 @@
+/* pages/mine/mine.wxss */
+.all{
+  top:40%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%)
+}
+.login{
+  widows: 80rpx;
+  height: 40rpx;
+  background: #C20C0C;
+  color: #fff;
+  text-align: center;
+  padding: 20rpx;
+  border-radius: 10rpx;
+  margin: 30rpx 0
+}
+.head{
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: block;
+  margin:40rpx 20rpx
+}
+.name{
+  margin: 40rpx
+}
+.lev{
+  margin: 10rpx;
+  background: #e2e2e2;
+  height: 30rpx;
+  border-radius: 20rpx;
+  padding: 5rpx 10rpx;
+  font-size: 24rpx;
+  width: 50rpx
+}
+.signIn{
+  background: #c20c0c;
+  color: #fff;
+  height: 35rpx;
+  border-radius: 15rpx;
+  padding: 10rpx;
+  font-size: 24rpx;
+  margin: 60rpx 20rpx 0 180rpx;
+  line-height: 35rpx
+}
+.icon{
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 35rpx
+}
+.manu{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+.item{
+  text-align: center
+}
+.but{
+  margin: 80rpx 0
+}
+.logout{
+   background: #FF976A;
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx;
+  margin: auto;
+  width: 18%
+}

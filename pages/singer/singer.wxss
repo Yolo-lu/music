@@ -1,0 +1,23 @@
+/* pages/singer/singer.wxss */
+.all{
+  width: 90%;
+  margin: auto
+}
+.van-ellipsis{
+  width: 70px;
+margin-right: 4rpx
+
+}
+.alphabet{
+  display: flex
+}
+.letter{
+  margin: 10rpx
+}
+.hot{
+   margin: 10rpx;
+   background: #C20C0C;
+   color: #fff;
+   padding: 0 5rpx
+  
+}

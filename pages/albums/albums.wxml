@@ -1,0 +1,5 @@
+<view wx:for="{{albums}}" wx:key="{{index}}">
+<view wx:if="{{id===item.id}}">
+<view style="background-image:url('{{item.picUrl}}')" class="background"></view>
+</view>
+</view>

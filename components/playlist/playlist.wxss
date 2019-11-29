@@ -1,0 +1,57 @@
+/* components/playlist/playlist.wxss */
+.pop{
+  width: 90%;
+  margin: auto
+}
+.head{
+  margin: 20rpx ;
+  display: flex;
+  justify-content: space-between
+}
+.left{
+  display: flex
+}
+.right{
+  display: flex
+}
+.head image{
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 10rpx
+}
+.order{
+  display: flex;
+}
+.l-img{
+  position: relative;
+  top: 6rpx
+}
+.list{
+  border-top: 2rpx solid #e2e2e2
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin: 0 15rpx
+}
+.left1{
+  display: flex
+}
+.ar{
+  font-size: 24rpx;
+  color: #999
+}
+.red{
+  color: red !important;
+}
+.horn{
+  display: flex;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 10rpx;
+  position: relative;
+  top: 20rpx
+}

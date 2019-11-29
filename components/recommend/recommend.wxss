@@ -1,0 +1,39 @@
+/* components/recommend/recommend.wxss */
+
+.songList{
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+.r-list{
+  width: 32%;
+  position: relative
+}
+.r-img{
+  width: 100%;
+  height: 200rpx;
+  display: block;
+  border-radius: 15rpx
+}
+.r-name{
+  font-size: 26rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 68rpx;
+  line-height: 68rpx
+}
+.play{
+  display: flex;
+  position: absolute;
+  right: 10rpx;
+  top: 10rpx;
+  font-size: 28rpx;
+  color: #FFF
+}
+.p-img{
+  display: block;
+  width: 32rpx;
+  height: 32rpx
+}

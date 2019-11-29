@@ -1,0 +1,81 @@
+/* pages/play/play.wxss */
+.all{}
+.background{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: 100%,100%;
+  filter: blur(100rpx);
+  z-index: -99;
+}
+.songDetail{
+  margin-top: 20rpx;
+}
+.name{
+  text-align: center;
+  color: #fff
+}
+.ar{
+  text-align: center;
+  color: #eee;
+  font-size: 28rpx
+}
+.image{
+  margin: 100rpx 0
+}
+.b-img{
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  width: 400rpx;
+  height: 400rpx;
+  animation: move 22s linear infinite;
+}
+  @keyframes move {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+.bottom{
+  width: 90%;
+  margin: auto;
+  padding-top: 200rpx
+}
+.play{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50rpx
+}
+.play image{
+  display: block;
+  width: 60rpx;
+  height: 60rpx
+}
+.p-img{
+  width: 80rpx !important;
+  height: 80rpx !important;
+  position: relative !important;
+  top: -10rpx !important;
+}
+.stop {
+      animation-play-state:paused;
+    }
+.slide{
+  display: flex;
+  color: #fff;
+  font-size: 26rpx;
+  justify-content: space-around;
+}
+.currentTime{
+  width: 17%;
+  position: relative;
+  top:-15rpx;
+}
+.progress{
+  width: 55%
+}

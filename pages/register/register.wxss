@@ -1,0 +1,37 @@
+.input{
+  margin: 30rpx;
+  display: flex;
+  border-bottom: 2rpx solid #f4f4f4;
+  padding: 20rpx
+}
+.name{
+  margin:0 60rpx 0 14rpx
+}
+.button{
+  display: flex;
+  margin: 50rpx 0;
+  justify-content: space-around
+}
+.login{
+  background: #FF4444;
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx
+}
+.register{
+   background: #FF976A;
+  color: #fff;
+  padding: 20rpx 40rpx;
+  border-radius: 10rpx
+}
+.code{
+  background: #07C160;
+  color: #fff;
+  padding: 10rpx;
+  margin-left: 25rpx
+}
+.correct{
+  font-size: 24rpx;
+  color: red;
+  margin-left: 30rpx
+}

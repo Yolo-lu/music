@@ -1,0 +1,27 @@
+
+<view>
+<view class="songList">
+<view wx:for="{{recommend}}" wx:key="{{index}}" class="r-list" >
+    <view  wx:if="{{index<6}}">
+      <view >
+      <view wx:if="{{num==='0'}}" bindtap="skip" data-item='{{item.id}}'>
+        <image src='{{item.picUrl}}' class="r-img" ></image>
+        </view>
+        <view wx:if="{{num==='1'}}" >
+        <image class="r-img" src="{{item.song.album.blurPicUrl}}"></image>
+        </view>
+        <view wx:if="{{num==='3'}}">
+        <image class="r-img" src="{{item.blurCoverUrl}}"></image>
+        </view>
+        <view wx:if="{{num==='2'}}">
+        <image src='{{item.picUrl}}' class="r-img" ></image>
+        </view>
+        <view class="play" wx:if="{{item.playCount}}" >
+        <image src="../../images/bofang.png" class="p-img"></image>
+        <view wx:if="{{item.playCount>10000}}">{{item.playCounts}}万</view>
+        <view wx:else>{{item.playCount}}</view></view>
+      </view>
+      <view class="r-name">{{item.name}}</view>
+    </view>
+  </view></view>
+</view>

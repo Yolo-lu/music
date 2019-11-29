@@ -1,0 +1,7 @@
+<swiper indicator-dots="{{indicatorDots}}" indicator-active-color="#C20C0C" style="height:260rpx" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{banner}}" wx:key="*this">
+    <swiper-item>
+      <image style="display:block;width:100%;border-radius:20rpx; margin:0 auto;" src="{{item.pic}}" class="slide-image" mode="widthFix" />
+    </swiper-item>
+  </block>
+</swiper>

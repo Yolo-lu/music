@@ -1,0 +1,19 @@
+/* components/artists/artists.wxss */
+.singer{
+  display: flex;
+  margin: 20rpx
+}
+.img{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  display: block
+}
+.name{
+  margin: 40rpx
+}
+.footer{
+  margin: 60rpx;
+  color: #666;
+  text-align: center
+}

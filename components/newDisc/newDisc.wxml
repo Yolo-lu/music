@@ -1,0 +1,30 @@
+<view class="recommend">
+  <view class="lists">
+    <view class="{{active===0? 'color':''}}" bindtap="newDisc">新碟</view>
+    <view class="line">|</view>
+    <view class="{{active===1? 'color':''}}" bindtap="newSong">新歌</view>
+  </view>
+  <view class="sqear" wx:if="{{active===0}}">推荐新碟</view>
+  <view class="sqear" wx:if="{{active===1}}">推荐新歌</view>
+</view>
+<view wx:if="{{active===0}}" class="new">
+  <view wx:for="{{albums}}" wx:key="{{index}}" class="r-list">
+    <view wx:if="{{index<6}}">
+      <view class="a-picture" bindtap="skipDetail" data-item="{{item.id}}">
+        <image src='{{item.blurPicUrl}}' class="r-img"></image>
+        <image src="../../images/play.png" class="play"></image>
+      </view>
+      <view class="r-name">{{item.name}}</view>
+    </view>
+  </view>
+</view>
+<view wx:if="{{active===1}}" class="new">
+  <view wx:for="{{data}}" wx:key="{{index}}" class="r-list">
+    <view wx:if="{{index<6}}">
+      <view>
+        <image src='{{item.album.blurPicUrl}}' class="r-img"></image>
+      </view>
+      <view class="r-name">{{item.album.name}}</view>
+    </view>
+  </view>
+</view>

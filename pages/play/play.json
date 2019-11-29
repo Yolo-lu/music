@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-slider": "/lib/vant/slider/index",
+    "playlist":"../../components/playlist/playlist"
+  },
+ 
+  "navigationBarTitleText": "播放歌曲"
+}

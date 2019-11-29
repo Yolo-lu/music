@@ -1,0 +1,41 @@
+<view >
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="phone-o" size="40rpx" />
+  </view>
+  <view class="name">手机号</view>
+  <input placeholder="请输入手机号" value="{{phone}}" bindblur="getPhone"></input>
+</view>
+  <view wx:if="{{!phoneLock}}" class="correct">请输入正确的手机号</view>
+</view>
+<view>
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="eye-o" size="40rpx" />
+  </view>
+  <view class="name">密码</view>
+  <input placeholder="请输入密码" type="password" value="{{password}}" bindblur="getPassword"></input>
+</view>
+<view wx:if="{{!passwordLock}}" class="correct">密码长度请在6-16位</view>
+</view>
+<view class="input">
+  <view style="color:red">*</view>
+  <view>
+    <van-icon name="orders-o" size="40rpx" />
+  </view>
+  <view class="name">验证码</view>
+  <input placeholder="请输入验证码" style="width:220rpx" value="{{code}}" bindblur="getCode"></input>
+    <view class="code" bindtap="sendCode">发送验证码</view>
+</view>
+<view class="input">
+    <view style="color:red ">*</view>
+    <view><van-icon name="contact " size="40rpx "/></view>
+    <view class="name ">昵称</view>
+    <input placeholder="请输入昵称 " value="{{name}} " bindblur="getName"></input>
+</view>
+<view class="button ">
+<view class="login " bindtap="login">前往登录</view>
+<view class="register " bindtap="register">立即注册</view>
+</view>

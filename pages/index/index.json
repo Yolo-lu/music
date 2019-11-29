@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "banner":"../../components/banner/banner",
+    "recommend": "../../components/recommend/recommend",
+    "newDisc": "../../components/newDisc/newDisc"
+  
+  }
+}

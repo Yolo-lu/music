@@ -1,0 +1,44 @@
+<view class="all">
+  <view wx:if="{{!user}}">
+    <view>你还没有登录哦</view>
+    <view class="login" bindtap="login">立即登录</view>
+  </view>
+</view>
+<view wx:if="{{user}}">
+  <view class="head">
+    <view>
+      <image src="{{user.avatarUrl}}" class="img"></image>
+    </view>
+    <view class="name">
+      <view>{{user.nickname}}</view>
+      <view class="lev">lev:{{userInfo.level}}</view>
+    </view>
+    <view class="signIn">
+      <image src="../../images/qiandao.png" class="icon"></image>
+      签到</view>
+  </view>
+  <view class="manu">
+    <view class="item">
+      <view>{{events.length}}</view>
+      <view>动态</view>
+    </view>
+    <view class="item">
+      <view>{{user.follows}}</view>
+      <view>关注</view>
+    </view>
+    <view class="item">
+      <view>{{fans.length}}</view>
+      <view>粉丝</view>
+    </view>
+    <view class="item" bindtap="skip">
+      <view>
+        <van-icon name="edit" />
+      </view>
+      <view>编辑</view>
+    </view>
+  </view>
+  <view class="but">
+  <view class="logout" bindtap="logout">退出登录</view>
+  </view>
+</view>
+

@@ -1,0 +1,17 @@
+<view class="all">
+  <van-tabs active="{{ active }}" bind:click="changeHead">
+    <van-tab wx:for="{{singer}}" wx:key="{{index}}" title="{{item.name}}" name="{{item.id}}" style="width:50rpx">
+    </van-tab>
+  </van-tabs>
+  <view wx:if="{{cat!==5001}}">
+  <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+    <view class="alphabet">
+    <view class="letter {{flag?'hot':''}}">热</view>
+    <view wx:for="{{alphabet}}">
+    <view class="letter {{newalphabet===item?'hot':''}}" bindtap="letter" data-item="{{item}}">{{item}}</view>
+    </view>
+    </view>
+  </scroll-view>
+  </view>
+  <artists artists="{{artists}}"></artists>
+</view>
