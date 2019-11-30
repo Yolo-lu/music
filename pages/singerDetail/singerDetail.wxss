@@ -1,0 +1,123 @@
+.background{
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 500rpx;
+height: 600rpx;
+background-size: 100%,100%;
+}
+.back{
+  position: absolute;
+  top: 60rpx;
+  left: 30rpx
+}
+.info{
+  position: absolute;
+  top: 400rpx;
+  left: 30rpx;
+  right: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #fff
+}
+
+.sub{
+  font-size: 26rpx;
+}
+.right{
+  display: flex;
+  background: #f45;
+  padding:0 10rpx;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  align-items: center
+}
+.icon{
+  margin:  5rpx
+}
+.playlist{
+  border-radius: 30rpx 30rpx 0 0;
+  background: #fff;
+  position: relative;
+  top: 0
+}
+.head{
+border-radius: 30rpx 30rpx 0 0;
+}
+.title{
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.left1{
+  display: flex;
+  position: relative;
+  top:10rpx;
+}
+.right1{
+  display: flex
+}
+.setting{
+  position: relative;
+  top: 5rpx;
+  margin: 0  8rpx
+}
+.a-img{
+  display: block;
+  width: 40rpx;
+  height: 40rpx;
+  margin: 0 10rpx;
+}
+.playAll{
+  font-weight: bold
+}
+.sum{
+  font-size: 28rpx;
+  color: #666;
+  margin-top: 6rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap
+}
+.songName,.names{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.list1{
+  width: 90%;
+  margin: auto
+}
+.b-list{
+  display: flex;
+  margin: 10rpx 0;
+  justify-content: space-between
+}
+.left2{
+  display: flex;
+  width: 75%
+}
+.index{
+  color: #666;
+  margin-right: 10rpx
+}
+.bottem{
+  display: flex
+}
+.only{
+  color: red;
+  font-size: 20rpx;
+  border:2rpx solid red;
+  border-radius: 8rpx;
+  padding: 0 8rpx;
+  margin: 8rpx
+}
+.right2{
+  display: flex
+}
+.p-img{
+  display: block;
+  width: 32rpx;
+  height: 32rpx
+}

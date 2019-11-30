@@ -6,56 +6,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:"",//传来的id
-    albums: [],//获取新碟
-    time:'',//发行时间
-    songs:[],//获取专辑歌曲
-    commentCount:0,//评论数
-    subCount:0,//分享数
+    id:'',//传来的id
+    name:'', //传来的name 
+    publishTime:'',//发布时间
+    program:{},//电台详情
+    // dj:{},//电台节目详情
+
   },
-  back(){
-    wx.navigateBack({
+  getDj() {
+    //电台节目详情
+    // app.globalData.fly.get(`/dj/program/detail?id=${this.data.id}`).then(res => {
       
-    })
-  },
-  getAlbum() {
-    //新碟
-    app.globalData.fly.get('/album/newest').then(res => {
-      res.data.albums.map(item=>{
+    //   this.setData({
+    //     dj: res.data.program,
+    //   })
+    //   console.log(res)
+    // }).catch(err => {
+    //   console.log(err)
+    // })
+    //电台详情
+    app.globalData.fly.get(`/playlist/detail?id=${this.data.id}`).then(res => {
+      res.data.playlist.tracks.map(item => {
         this.setData({
-          time: time.formatTimeTwo(item.publishTime, 'Y-M-D'),
+          publishTime: time.formatTimeTwo(item.publishTime, 'M-D'),
         })
-      }),
+      })
       this.setData({
-        albums: res.data.albums
+        program: res.data.playlist,
       })
       // console.log(res)
     }).catch(err => {
       console.log(err)
-    });
-  },
-  getAlbumSong() {
-    //专辑歌曲
-    app.globalData.fly.get(`/album?id=${this.data.id}`).then(res => {
-      this.setData({
-        songs: res.data.songs
-      })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
-  },
-  getAlbumInfo() {
-    //专辑动态信息
-    app.globalData.fly.get(`/album/detail/dynamic?id=${this.data.id}`).then(res => {
-      this.setData({
-        subCount: res.data.subCount,
-        commentCount: res.data.commentCount
-      })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
+    })
   },
   play(e) {  //跳转播放
     let id = e.currentTarget.dataset.item;
@@ -75,12 +57,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: Number(options.id)
+      id:options.id,
+      name:options.name
     })
-    this.getAlbum()
-    this.getAlbumSong()
-    this.getAlbumInfo()
-    // console.log(typeof this.data.id)
+    // console.log(this.data.name)
+    this.getDj()
   },
 
   /**

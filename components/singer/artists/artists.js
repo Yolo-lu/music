@@ -21,6 +21,15 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
-  }
+    skip(e) {  //跳转歌单详情
+      let id = e.currentTarget.dataset.item;
+      // console.log(e)
+      wx.navigateTo({
+        url: `/pages/singerDetail/singerDetail?id=${id}`,
+      })
+    },
+  },
+// ready(){
+//   console.log(this.data.artists)
+// }
 })

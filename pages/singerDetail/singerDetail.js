@@ -1,61 +1,36 @@
 const app = getApp()
-let time = require("../../utils/util.js") 
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id:"",//传来的id
-    albums: [],//获取新碟
-    time:'',//发行时间
-    songs:[],//获取专辑歌曲
-    commentCount:0,//评论数
-    subCount:0,//分享数
+    id:'',//传来的id
+    data:{},//歌手信息
+    active:0,
+    name:"主页",//标签栏的name
   },
-  back(){
+  onChange(event) {
+  //  console.log(event)
+  this.setData({
+    name: event.detail.name
+  })
+  },
+  getData() {
+    //ges详情
+    app.globalData.fly.get(`/artists?id=${this.data.id}`).then(res => {
+      this.setData({
+        data:res.data
+      })
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
+    },
+  back(){  //返回上一级
     wx.navigateBack({
       
     })
-  },
-  getAlbum() {
-    //新碟
-    app.globalData.fly.get('/album/newest').then(res => {
-      res.data.albums.map(item=>{
-        this.setData({
-          time: time.formatTimeTwo(item.publishTime, 'Y-M-D'),
-        })
-      }),
-      this.setData({
-        albums: res.data.albums
-      })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
-  },
-  getAlbumSong() {
-    //专辑歌曲
-    app.globalData.fly.get(`/album?id=${this.data.id}`).then(res => {
-      this.setData({
-        songs: res.data.songs
-      })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
-  },
-  getAlbumInfo() {
-    //专辑动态信息
-    app.globalData.fly.get(`/album/detail/dynamic?id=${this.data.id}`).then(res => {
-      this.setData({
-        subCount: res.data.subCount,
-        commentCount: res.data.commentCount
-      })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    });
   },
   play(e) {  //跳转播放
     let id = e.currentTarget.dataset.item;
@@ -75,12 +50,9 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id: Number(options.id)
+      id:options.id,
     })
-    this.getAlbum()
-    this.getAlbumSong()
-    this.getAlbumInfo()
-    // console.log(typeof this.data.id)
+    this.getData()
   },
 
   /**

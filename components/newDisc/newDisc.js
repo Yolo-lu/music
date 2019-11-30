@@ -37,7 +37,7 @@ ready(){
     },
     skipDetail(e){
       let id=e.currentTarget.dataset.item
-      console.log(id)
+      // console.log(id)
       wx.navigateTo({
         url: `/pages/albums/albums?id=${id}`,
       })
@@ -48,7 +48,7 @@ ready(){
         this.setData({
           albums: res.data.albums
         })
-        console.log(res)
+        // console.log(res)
       }).catch(err => {
         console.log(err)
       });
@@ -63,6 +63,19 @@ ready(){
       }).catch(err => {
         console.log(err)
       });
-    }
+    },
+    play(e) {  //跳转播放
+      let id = e.currentTarget.dataset.item;
+      this.setData({
+        songList: this.data.songList
+      })
+      // console.log(this.data.songList)
+      wx.setStorageSync('songList', this.data.songList)
+      wx.setStorageSync('index', e.currentTarget.dataset.index)
+      // console.log(wx.getStorageSync('songList')) 
+      wx.navigateTo({
+        url: `../../pages/play/play?id=${id}`,
+      })
+    },
   }
 })

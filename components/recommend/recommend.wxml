@@ -8,13 +8,13 @@
         <image src='{{item.picUrl}}' class="r-img" ></image>
         </view>
         <view wx:if="{{num==='1'}}" >
-        <image class="r-img" src="{{item.song.album.blurPicUrl}}"></image>
+        <image class="r-img" src="{{item.song.album.blurPicUrl}}" bindtap="play" data-item="{{item.id}}" data-index="{{index}}"></image>
         </view>
         <view wx:if="{{num==='3'}}">
         <image class="r-img" src="{{item.blurCoverUrl}}"></image>
         </view>
         <view wx:if="{{num==='2'}}">
-        <image src='{{item.picUrl}}' class="r-img" ></image>
+        <image src='{{item.picUrl}}' class="r-img" bindtap="dj" data-item="{{item.id}}" data-name="{{item.name}}" ></image>
         </view>
         <view class="play" wx:if="{{item.playCount}}" >
         <image src="../../images/bofang.png" class="p-img"></image>

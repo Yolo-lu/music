@@ -1,0 +1,75 @@
+<view style="height:512rpx">
+  <view style="background-image:url('{{data.artist.picUrl}}')" class="background">
+    <view class="info">
+      <view class="left">
+        <view>{{data.artist.name}}</view>
+        <view class="sub">粉丝</view>
+      </view>
+      <view class="right">
+        <view class="icon">
+          <van-icon name="plus" />
+        </view>
+        <view>关注</view>
+      </view>
+    </view>
+    <view class="back" bindtap="back">
+      <van-icon name="arrow-left" color="#fff" size="40rpx" />
+    </view>
+  </view>
+</view>
+<view class="playlist">
+  <view class="head">
+    <van-tabs active="{{ active }}" bind:click="onChange">
+      <van-tab title="主页"  name="主页"></van-tab>
+      <van-tab title="单曲" name="单曲"></van-tab>
+      <van-tab title="专辑{{data.artist.albumSize}}" name="专辑"></van-tab>
+      <van-tab title="视频{{data.artist.mvSize}}" name="视频"></van-tab>
+    </van-tabs>
+  </view>
+  <view >
+    <view class="title" wx:if="{{name==='主页'}}">
+      <view class="left1">
+        <view>
+          <image src="../../images/bofang1.png" class="a-img"></image>
+        </view>
+        <view class="playAll" >播放热门</view>
+        <view class="sum">（共{{data.hotSongs.length}}首）</view>
+      </view>
+    </view>
+     <view class="title" wx:if="{{name==='单曲'}}">
+      <view class="left1">
+        <view>
+          <image src="../../images/collect.png" class="a-img"></image>
+        </view>
+        <view class="playAll" >收藏热门</view>
+        <view class="sum">（共{{data.hotSongs.length}}首）</view>
+      </view>
+      <view class="right1">
+      <view class="setting"><van-icon name="setting-o" /></view>
+      <view>管理</view>
+      </view>
+    </view>
+    <view class="list1" wx:if="{{name==='主页'|| name==='单曲'}}">
+      <view wx:for="{{data.hotSongs}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+        <view class="left2">
+          <view class="index">{{index+1}}</view>
+          <view class="songName">
+            <view class="names">{{item.al.name}}</view>
+            <view class="bottem">
+              <view class="only">SQ</view>
+              <view class="sum">{{item.name}}</view>
+            </view>
+          </view>
+        </view>
+        <view class="right2">
+          <view bindtap="play" data-item="{{item.id}}">
+            <image src="../../images/bofang2.png" class="p-img"></image>
+          </view>
+          <view>
+            <image src="../../images/more.png" class="p-img"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

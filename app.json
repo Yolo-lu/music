@@ -8,7 +8,9 @@
     "pages/songlistDetail/songlistDetail",
     "pages/editInfo/editInfo",
     "pages/play/play",
-    "pages/albums/albums"
+    "pages/albums/albums",
+    "pages/dj/dj",
+    "pages/singerDetail/singerDetail"
   ],
     "requiredBackgroundModes": [
       "audio",

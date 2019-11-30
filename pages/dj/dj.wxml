@@ -1,0 +1,46 @@
+<view>
+  <view style="background-image:url('{{program.coverImgUrl}}')" class="background"></view>
+  <view class="info">
+    <view class="left">
+      <view>{{name}}</view>
+      <view class="sub">{{program.subscribedCount}}人订阅</view>
+    </view>
+    <view class="right">
+      <view class="icon">
+        <van-icon name="star-o" />
+      </view>
+      <view>订阅</view>
+    </view>
+  </view>
+  <view class="playlist">
+    <view class="title">
+      <view class="left1">
+        <view>
+          <image src="../../images/bofang1.png" class="a-img"></image>
+        </view>
+        <view class="playAll">播放全部</view>
+        <view class="sum">（共{{program.tracks.length}}期）</view>
+      </view>
+    </view>
+    <view class="list1">
+      <view wx:for="{{program.tracks}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+        <view class="left2">
+          <view class="index">{{index+1}}</view>
+          <view class="songName">
+            <view class="names">{{item.name}}</view>
+            <view class="bottom">
+              <view>{{publishTime}}</view>
+              <!-- <view>
+                <image src="../../images/bofang9.png"  class="p-img"></image> -->
+                <!-- </view> -->
+                <view class="ar">{{item.ar[0].name}}</view>
+            </view>
+          </view>
+        </view>
+        <view>
+          <image src="../../images/more.png" class="p-img"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

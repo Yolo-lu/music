@@ -21,7 +21,7 @@
 <view wx:if="{{active===1}}" class="new">
   <view wx:for="{{data}}" wx:key="{{index}}" class="r-list">
     <view wx:if="{{index<6}}">
-      <view>
+      <view bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
         <image src='{{item.album.blurPicUrl}}' class="r-img"></image>
       </view>
       <view class="r-name">{{item.album.name}}</view>

@@ -1,9 +1,11 @@
 <view>
-  <view wx:for="{{artists}}" wx:key="{{index}}" class="singer">
+  <view wx:for="{{artists}}" wx:key="{{index}}"  >
+   <view bindtap="skip" data-item='{{item.id}}' class="singer">
     <view>
     <image src="{{item.img1v1Url}}" class="img"></image>
     </view>
     <view class="name">{{item.name}}</view>
+   </view>
   </view>
   <view class="footer" wx:if="{{length<limit}}">已加载全部</view>
 </view>

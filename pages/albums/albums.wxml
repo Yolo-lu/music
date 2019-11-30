@@ -1,5 +1,95 @@
 <view wx:for="{{albums}}" wx:key="{{index}}">
-<view wx:if="{{id===item.id}}">
-<view style="background-image:url('{{item.picUrl}}')" class="background"></view>
-</view>
+  <view wx:if="{{id===item.id}}">
+    <view style="background-image:url('{{item.picUrl}}')" class="background"></view>
+    <view class="back" bindtap="back">
+      <van-icon name="arrow-left" color="#fff" size="40rpx" />
+    </view>
+    <view style="margin: auto;width: 90%;">
+      <view class="detail" wx:for="{{albums}}" wx:key="{{index}}">
+        <view class="head" wx:if="{{id===item.id}}">
+          <view class="left">
+            <image class="r-img" src="{{item.picUrl}}"></image>
+          </view>
+          <view class="right">
+            <view class="name">{{item.name}}</view>
+            <view class="blogger">
+              <view>
+                歌手：
+              </view>
+              <view class="nickname">{{item.artist.name}}</view>
+              <view class="icon">
+                <van-icon name="arrow" />
+              </view>
+            </view>
+            <view style="display:flex">
+              <view class="description">发行时间：{{time}}</view>
+              <view>
+                <view class="icon">
+                  <van-icon name="arrow" />
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="manu" wx:if="{{id===item.id}}">
+          <view class="icon-s">
+            <view>
+              <image src="../../images/pinglun.png" class="img"></image>
+            </view>
+            <view class="icon-name">{{commentCount}}</view>
+          </view>
+          <view class="icon-s">
+            <view>
+              <image src="../../images/zhuanfa.png" class="img" style="width:40rpx;height:40rpx"></image>
+            </view>
+            <view icon-name>{{subCount}}</view>
+          </view>
+          <view class="icon-t">
+            <view>
+              <image src="../../images/download.png" class="img"></image>
+            </view>
+            <view icon-name>下载</view>
+          </view>
+          <view class="icon-s">
+            <view>
+              <image src="../../images/select.png" class="img" style="width:40rpx;height:40rpx"></image>
+            </view>
+            <view icon-name>多选</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="playlist">
+      <view class="title">
+        <view class="left1">
+          <view>
+            <image src="../../images/bofang1.png" class="a-img"></image>
+          </view>
+          <view class="playAll">播放全部</view>
+          <view class="sum">（共{{songs.length}}首）</view>
+        </view>
+        <view class="right1">
+          <van-icon name="plus" /> 收藏
+        </view>
+      </view>
+      <view class="list1">
+        <view wx:for="{{songs}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+          <view class="left2">
+            <view class="index">{{index+1}}</view>
+            <view class="songName">
+              <view class="names">{{item.name}}</view>
+              <view class="bottem">
+                <view class="only">SQ</view>
+                <view class="sum">{{item.ar[0].name}}</view>
+              </view>
+            </view>
+          </view>
+          <view>
+            <image src="../../images/more.png" class="p-img"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
 </view>
