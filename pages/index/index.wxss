@@ -62,3 +62,6 @@
 .lists{
   display: flex
 }
+.weight {
+  width: 70% !important;
+}

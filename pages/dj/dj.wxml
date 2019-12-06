@@ -1,9 +1,9 @@
 <view>
-  <view style="background-image:url('{{program.coverImgUrl}}')" class="background"></view>
+  <view style="background-image:url('{{program.picUrl}}')" class="background"></view>
   <view class="info">
     <view class="left">
-      <view>{{name}}</view>
-      <view class="sub">{{program.subscribedCount}}人订阅</view>
+      <view>{{program.name}}</view>
+      <view class="sub">{{program.subCount}}人订阅</view>
     </view>
     <view class="right">
       <view class="icon">
@@ -12,28 +12,81 @@
       <view>订阅</view>
     </view>
   </view>
-  <view class="playlist">
+  <view class="box">
     <view class="title">
-      <view class="left1">
-        <view>
-          <image src="../../images/bofang1.png" class="a-img"></image>
+      <view bindtap="detail" class="{{active===0?'red':''}}">详情</view>
+      <view bindtap="pro" class="program {{active===1?'red':''}}">节目
+        <view class="count">{{count}}</view>
+      </view>
+    </view>
+    <view class="detail" wx:if="{{active===0}}">
+      <view>主播</view>
+      <view class="second">
+        <view class="left1">
+          <image src="{{program.dj.avatarUrl}}" class="a-img"></image>
+          <view>
+            <view>{{program.dj.nickname}}</view>
+            <view class="sub">{{program.dj.description}}</view>
+          </view>
         </view>
-        <view class="playAll">播放全部</view>
-        <view class="sum">（共{{program.tracks.length}}期）</view>
+        <view class="right1">
+          <view>赞赏</view>
+        </view>
+      </view>
+      <view class="content">电台内容简介</view>
+      <view class="brief">
+        <view class="sub">分类：</view>
+        <view class="category">{{program.category}}</view>
+      </view>
+      <view class="sub">{{program.desc}}</view>
+    <view wx:if="{{program.commentDatas.length>0}}">
+      <view class="content">精彩评论</view>
+      <view wx:for="{{program.commentDatas}}" wx:key="{{index}}" class="comment">
+        <view class="left22">
+          <image src="{{item.userProfile.avatarUrl}}" class="u-img"></image>
+        </view>
+        <view class="right3">
+          <view class="nickname">{{item.userProfile.nickname}}</view>
+          <view class="c-content">{{item.content}}</view>
+          <!-- <import src ="../../lib/wxParse/wxParse.wxml" />
+       <template is="wxParse" data="{{wxParseData:article.nodes}}"/> -->
+          <view class="sub">---{{item.programName}}</view>
+        </view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class="playlist" wx:if="{{active===1}}">
+    <view class="titles">
+      <view class="left4">
+        <view>
+          共{{count}} 期
+        </view>
+      </view>
+      <view class="right4">
+        <view>
+          <image src="../../images/playlists.png" class="aa-img"></image>
+        </view>
+        <view class="select">多选</view>
       </view>
     </view>
     <view class="list1">
-      <view wx:for="{{program.tracks}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+      <view wx:for="{{content}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
         <view class="left2">
-          <view class="index">{{index+1}}</view>
+          <view class="index">{{item.serialNum}}</view>
           <view class="songName">
             <view class="names">{{item.name}}</view>
             <view class="bottom">
-              <view>{{publishTime}}</view>
-              <!-- <view>
-                <image src="../../images/bofang9.png"  class="p-img"></image> -->
-                <!-- </view> -->
-                <view class="ar">{{item.ar[0].name}}</view>
+              <view>{{publishTime[index]}}</view>
+              <view>
+                <image src="../../images/bofang9.png" class="p-img"></image>
+              </view>
+              <view class="ar" wx:if="{{item.listenerCount>100000}}">{{item.listenerCounts}}万</view>
+              <view wx:else>{{item.listenerCount}}</view>
+              <view>
+                <image src="../../images/time.png" class="p-img"></image>
+              </view>
+              <view>{{item.allTime}}</view>
             </view>
           </view>
         </view>

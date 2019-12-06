@@ -40,9 +40,12 @@
 .left1{
   display: flex
 }
+.name{
+  overflow: hidden
+}
 .ar{
   font-size: 24rpx;
-  color: #999
+  color: #999;
 }
 .red{
   color: red !important;

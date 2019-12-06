@@ -1,36 +1,82 @@
-<view style="background-image:url('{{songDetail[0].al.picUrl}}')" class="background"></view>
-<view class="all">
-<view wx:for="{{songDetail}}" wx:key="{{index}}"class="songDetail">
-<view class="name">{{item.name}}</view>
-<view wx:for="{{item.ar}}" wx:for-item="item1" wx:for-index="index1" wx:key="{{index1}}">
-<view class="ar">{{item1.name}}</view>
-</view>
-<view class="image">
-<image src="{{item.al.picUrl}}" class="b-img {{flag===false?'stop':''}}"></image>
-</view>
-</view>
-<view class="bottom">
-<view class="slide">
-<view class="currentTime">{{currentTime}}</view>
-<view class="progress">
-<van-slider value="{{progress}}" bind:change="onChange" />
-</view>
-<view class="currentTime">{{allTime}}</view>
-</view>
-  <view class="play">
-  <image src="../../images/order.png" wx:if="{{active===0}}" bindtap="order"></image>
-  <image src="../../images/only.png" wx:if="{{active===2}}" bindtap="only"></image>
-  <image src="../../images/random.png" wx:if="{{active===1}}" bindtap="random"></image>
-  <image src="../../images/forword.png" bindtap="forword"></image>
-  <view>
-  <image src="../../images/parden.png" bindtap="parden" class="p-img" wx:if="{{flag}}"></image>
-  <image src="../../images/player.png" class="p-img" bindtap="play" wx:if="{{!flag}}"></image>
+<view wx:if="{{songlock}}">
+  <view style="background-image:url('{{songDetail[0].al.picUrl}}')" class="background">
   </view>
-  <image src="../../images/next.png" bindtap="next"></image>
-  <image src="../../images/playlist.png" bindtap="playlist"></image>
-  </view>
-  <view wx:if="{{shows}}">
-  <playlist></playlist>
+  <view class="all">
+    <view >
+      <view wx:for="{{songDetail}}" wx:key="{{index}}" class="songDetail">
+        <view class="name">{{item.name}}</view>
+        <view wx:for="{{item.ar}}" wx:for-item="item1" wx:for-index="index1" wx:key="{{index1}}">
+          <view class="ar">{{item1.name}}</view>
+        </view>
+        <view class="image">
+          <image src="{{item.al.picUrl}}" class="b-img {{flag===false?'stop':''}}"></image>
+        </view>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="slide">
+        <view class="currentTime">{{currentTime}}</view>
+        <view class="progress">
+          <van-slider value="{{progress}}" bind:change="onChange" />
+        </view>
+        <view class="currentTime">{{allTime}}</view>
+      </view>
+      <view class="play">
+        <image src="../../images/order.png" wx:if="{{active===0}}" bindtap="order"></image>
+        <image src="../../images/only.png" wx:if="{{active===2}}" bindtap="only"></image>
+        <image src="../../images/random.png" wx:if="{{active===1}}" bindtap="random"></image>
+        <image src="../../images/forword.png" bindtap="forword"></image>
+        <view>
+          <image src="../../images/parden.png" bindtap="parden" class="p-img" wx:if="{{flag}}"></image>
+          <image src="../../images/player.png" class="p-img" bindtap="play" wx:if="{{!flag}}"></image>
+        </view>
+        <image src="../../images/next.png" bindtap="next"></image>
+        <image src="../../images/playlist.png" bindtap="playlist"></image>
+      </view>
+      <view wx:if="{{shows}}">
+        <playlist></playlist>
+      </view>
+    </view>
   </view>
 </view>
+<view wx:if="{{djlock}}">
+  <view style="background-image:url('{{program.coverUrl}}')" class="background"></view>
+  <view class="all">
+    <view class="songDetail">
+      <view class="name">{{program.name}}</view>
+      <view style="display:flex">
+        <view>
+          <image src="{{program.radio.picUrl}}" class="a-img"></image>
+        </view>
+        <view class="ar">{{program.radio.name}}</view>
+      </view>
+      <view class="image">
+        <image src="{{program.coverUrl}}" class="b-img {{flag===false?'stop':''}}"></image>
+      </view>
+    </view>
+    <view class="bottom">
+      <view class="slide">
+        <view class="currentTime">{{currentTime}}</view>
+        <view class="progress">
+          <van-slider value="{{progress}}" bind:change="onChange" />
+        </view>
+        <view class="currentTime">{{allTime}}</view>
+      </view>
+      <view class="play">
+        <image src="../../images/order.png" wx:if="{{active===0}}" bindtap="order"></image>
+        <image src="../../images/only.png" wx:if="{{active===2}}" bindtap="only"></image>
+        <image src="../../images/random.png" wx:if="{{active===1}}" bindtap="random"></image>
+        <image src="../../images/forword.png" bindtap="forword"></image>
+        <view>
+          <image src="../../images/parden.png" bindtap="parden" class="p-img" wx:if="{{flag}}"></image>
+          <image src="../../images/player.png" class="p-img" bindtap="play" wx:if="{{!flag}}"></image>
+        </view>
+        <image src="../../images/next.png" bindtap="next"></image>
+        <image src="../../images/playlist.png" bindtap="playlist"></image>
+      </view>
+      <view wx:if="{{shows}}">
+        <playlist></playlist>
+      </view>
+    </view>
+  </view>
 </view>

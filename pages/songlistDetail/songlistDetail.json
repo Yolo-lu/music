@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "playbar": "../../components/playbar/playbar"
+  },
   "navigationBarTitleText": "歌单"
 }

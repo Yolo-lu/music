@@ -147,7 +147,7 @@
 }
 .b-list{
   display: flex;
-  margin: 10rpx 0;
+  margin: 10rpx 0 ;
   justify-content: space-between
 }
 .left2{
@@ -171,4 +171,13 @@
 }
 .right2{
   display: flex
+}
+.bottom{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  z-index: 99;
+   background: #fff;
 }

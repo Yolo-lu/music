@@ -1,10 +1,10 @@
 <view class="all">
-  <view wx:if="{{!user}}">
+  <view wx:if="{{!infolock}}">
     <view>你还没有登录哦</view>
     <view class="login" bindtap="login">立即登录</view>
   </view>
 </view>
-<view wx:if="{{user}}">
+<view wx:if="{{infolock}}">
   <view class="head">
     <view>
       <image src="{{user.avatarUrl}}" class="img"></image>
@@ -13,9 +13,12 @@
       <view>{{user.nickname}}</view>
       <view class="lev">lev:{{userInfo.level}}</view>
     </view>
-    <view class="signIn">
+    <view class="signIn" bindtap="signIn" wx:if="{{flag}}">
       <image src="../../images/qiandao.png" class="icon"></image>
       签到</view>
+      <view class="signIn" bindtap="signed" wx:if="{{!flag}}">
+      <image src="../../images/qiandao.png" class="icon"></image>
+      已签到</view>
   </view>
   <view class="manu">
     <view class="item">

@@ -8,6 +8,7 @@ Page({
     id:'',//传来的id
     data:{}, //歌单详情
     songList:[],//要存的歌单
+    indexs:0,//存的当前播放歌曲index
   },
   getData(){
     wx.showLoading({
@@ -23,7 +24,6 @@ Page({
             songList: res.data.playlist.tracks
           })
         }
-     
       }
   //  console.log(res)
     }).catch(err => {
@@ -49,7 +49,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id:options.id
+      id:options.id,
+      indexs: wx.getStorageSync("index")
     })
     this.getData()
   },
@@ -93,7 +94,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    
   },
 
   /**

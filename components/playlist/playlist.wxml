@@ -24,7 +24,7 @@
       </view>
     </view>
     <view class="list" wx:for="{{songList}}" wx:key="{{index}}">
-      <view class="row">
+      <view class="row" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
         <view class="left1 {{indexs===index? 'red':''}}">
         <view wx:if="{{indexs===index}}">
         <image src="../../images/horn.png" class="horn"></image>

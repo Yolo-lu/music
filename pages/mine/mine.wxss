@@ -46,13 +46,14 @@
   border-radius: 15rpx;
   padding: 10rpx;
   font-size: 24rpx;
-  margin: 60rpx 20rpx 0 180rpx;
+  margin: 60rpx 20rpx 0 160rpx;
   line-height: 35rpx
 }
 .icon{
   width: 32rpx;
   height: 32rpx;
-  line-height: 35rpx
+  position: relative;
+  top: 7rpx
 }
 .manu{
   display: flex;

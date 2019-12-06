@@ -7,7 +7,7 @@
   <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
     <view class="alphabet">
     <view class="letter {{flag?'hot':''}}">热</view>
-    <view wx:for="{{alphabet}}">
+    <view wx:for="{{alphabet}}" wx:key="{{index}}">
     <view class="letter {{newalphabet===item?'hot':''}}" bindtap="letter" data-item="{{item}}">{{item}}</view>
     </view>
     </view>

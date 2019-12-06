@@ -20,36 +20,93 @@
 <view class="playlist">
   <view class="head">
     <van-tabs active="{{ active }}" bind:click="onChange">
-      <van-tab title="主页"  name="主页"></van-tab>
+      <van-tab title="主页" name="主页"></van-tab>
       <van-tab title="单曲" name="单曲"></van-tab>
       <van-tab title="专辑{{data.artist.albumSize}}" name="专辑"></van-tab>
       <van-tab title="视频{{data.artist.mvSize}}" name="视频"></van-tab>
     </van-tabs>
   </view>
-  <view >
+  <view>
     <view class="title" wx:if="{{name==='主页'}}">
       <view class="left1">
         <view>
           <image src="../../images/bofang1.png" class="a-img"></image>
         </view>
-        <view class="playAll" >播放热门</view>
+        <view class="playAll">播放热门</view>
         <view class="sum">（共{{data.hotSongs.length}}首）</view>
       </view>
     </view>
-     <view class="title" wx:if="{{name==='单曲'}}">
+    <view class="title" wx:if="{{name==='单曲'}}">
       <view class="left1">
         <view>
           <image src="../../images/collect.png" class="a-img"></image>
         </view>
-        <view class="playAll" >收藏热门</view>
+        <view class="playAll">收藏热门</view>
         <view class="sum">（共{{data.hotSongs.length}}首）</view>
       </view>
       <view class="right1">
-      <view class="setting"><van-icon name="setting-o" /></view>
-      <view>管理</view>
+        <view class="setting">
+          <van-icon name="setting-o" />
+        </view>
+        <view>管理</view>
       </view>
     </view>
-    <view class="list1" wx:if="{{name==='主页'|| name==='单曲'}}">
+    <view class="title" wx:if='{{name==="专辑"}}'>
+      <view class="left1">
+        <view>按发行时间排序</view>
+      </view>
+      <view class="right1">
+        <view class="setting">
+          <image src="../../images/paixu.png" class="p-img">
+          </image>
+        </view>
+        <view>排序</view>
+      </view>
+    </view>
+    <view class="title" wx:if='{{name==="视频"}}'>
+      <view class="left1">
+        <text>全部</text>
+        <text class="time">(共{{data.artist.mvSize}}个)</text>
+      </view>
+      <view class="right1">
+        <view>全部</view>
+        <view class="line">|</view>
+        <view>排序</view>
+      </view>
+    </view>
+    <view class="list1" wx:if="{{name==='主页'}}">
+        <view wx:for="{{data.hotSongs}}" wx:key="{{index}}" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
+          <view wx:if="{{index<5}}" class="b-list">
+            <view class="left2">
+              <view class="index">{{index+1}}</view>
+              <view class="songName">
+                <view class="names">{{item.al.name}}</view>
+                <view class="bottem">
+                  <view class="only">SQ</view>
+                  <view class="sum">{{item.name}}</view>
+                </view>
+              </view>
+            </view>
+            <view class="right2">
+              <view bindtap="play" data-item="{{item.id}}">
+                <image src="../../images/bofang2.png" class="p-img"></image>
+              </view>
+              <view>
+                <image src="../../images/more.png" class="p-img"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="morehot" bindtap="more">更多热歌></view>
+        <view>基本信息</view>
+        <view wx:if="{{!more}}">
+        <view class="brief" >简介：{{data.artist.briefDesc}}
+        </view>
+        <view class="morehot" bindtap="brief">更多信息></view>
+        </view>
+         <view class="briefs" wx:if="{{more}}">简介：{{data.artist.briefDesc}}</view>
+    </view>
+    <view class="list1" wx:if="{{name==='单曲'}}">
       <view wx:for="{{data.hotSongs}}" wx:key="{{index}}" class="b-list" bindtap="play" data-item="{{item.id}}" data-index="{{index}}">
         <view class="left2">
           <view class="index">{{index+1}}</view>
@@ -67,6 +124,37 @@
           </view>
           <view>
             <image src="../../images/more.png" class="p-img"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list1" wx:if="{{name==='专辑'}}">
+      <view wx:for="{{hotAlbums}}" wx:key="{{index}}" class="a-list" bindtap="hotAlbums" data-item="{{item.id}}" data-index="{{index}}">
+        <view>
+          <image src="{{item.picUrl}}" class="alb-img"></image>
+        </view>
+        <view class="alb-info">
+          <view class="names">{{item.name}}</view>
+          <view class="time">
+            <view>{{publishTime[index]}}</view>
+            <view class="size">{{item.size}}首</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="list1" wx:if="{{name==='视频'}}">
+      <view wx:for="{{mvs}}" wx:key="{{index}}" class="a-list">
+        <view>
+          <image src="{{item.imgurl}}" class="mv-img"></image>
+          <view class="mv-play">
+            <image src="../../images/bofang.png" class="p-img"></image>
+            <view class="playcount">{{item.playCount}}</view>
+          </view>
+        </view>
+        <view class="alb-info">
+          <view class="names">{{item.name}}</view>
+          <view class="time">
+            <view>{{publishTime[index]}}</view>
           </view>
         </view>
       </view>

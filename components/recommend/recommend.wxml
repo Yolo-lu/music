@@ -14,7 +14,7 @@
         <image class="r-img" src="{{item.blurCoverUrl}}"></image>
         </view>
         <view wx:if="{{num==='2'}}">
-        <image src='{{item.picUrl}}' class="r-img" bindtap="dj" data-item="{{item.id}}" data-name="{{item.name}}" ></image>
+        <image src='{{item.picUrl}}' class="r-img" bindtap="dj" data-item="{{item.program.radio.id}}" data-name="{{item.name}}" ></image>
         </view>
         <view class="play" wx:if="{{item.playCount}}" >
         <image src="../../images/bofang.png" class="p-img"></image>

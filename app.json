@@ -10,7 +10,8 @@
     "pages/play/play",
     "pages/albums/albums",
     "pages/dj/dj",
-    "pages/singerDetail/singerDetail"
+    "pages/singerDetail/singerDetail",
+    "pages/singeralbums/singeralbums"
   ],
     "requiredBackgroundModes": [
       "audio",

@@ -121,3 +121,67 @@ border-radius: 30rpx 30rpx 0 0;
   width: 32rpx;
   height: 32rpx
 }
+.a-list{
+  display: flex;
+  margin: 20rpx 0
+}
+.alb-img{
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx
+}
+.time{
+  color: #666;
+  font-size: 26rpx;
+  display: flex
+}
+.alb-info{
+  margin-left: 20rpx
+}
+.size{
+  margin-left: 10rpx
+}
+.line{
+  margin: 0 10rpx
+}
+.mv-img{
+  display: block;
+  width: 160rpx;
+  height: 120rpx;
+  border-radius: 10rpx
+}
+.mv-play{
+display: flex;
+position: relative;
+top: -120rpx;
+left: 44rpx
+}
+.playcount{
+  color: #fff;
+  font-size: 24rpx
+}
+.morehot{
+  text-align: center;
+  color: #666;
+  font-size: 28rpx;
+  margin-top: 20rpx
+  
+}
+.brief{
+    color: #666;
+  font-size: 26rpx;
+  display: flex;
+  line-height: 45rpx;
+    display: -webkit-box;
+    -webkit-line-clamp:4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+.briefs{
+    color: #666;
+  font-size: 26rpx;
+  display: flex;
+  line-height: 45rpx;
+}

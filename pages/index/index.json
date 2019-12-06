@@ -2,7 +2,7 @@
   "usingComponents": {
     "banner":"../../components/banner/banner",
     "recommend": "../../components/recommend/recommend",
-    "newDisc": "../../components/newDisc/newDisc"
-  
+    "newDisc": "../../components/newDisc/newDisc",
+  "search": "../../components/search/search"
   }
 }

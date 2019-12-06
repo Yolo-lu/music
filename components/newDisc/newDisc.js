@@ -31,6 +31,7 @@ ready(){
       this.setData({
         active: 1
       })
+      // this.getSong()
       if (!this.data.data) {
         this.getSong()
       }

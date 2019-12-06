@@ -7,73 +7,88 @@ Page({
   data: {
     user: null, //存的用户信息
     userInfo: {}, //用户详情
-    events:[],//用户动态
-    fans:[],//用户粉丝
+    events: [], //用户动态
+    fans: [], //用户粉丝
+    flag: true, //控制签到
+    infolock: false, //控制登录信息
+  },
+  signIn() { //点击签到
+    this.setData({
+      flag: !this.data.flag
+    })
+  },
+  signed() { //点击已签到
+    this.setData({
+      flag: !this.data.flag
+    })
   },
   getUserInfo() {
     //用户详情
-    app.globalData.fly.get(`/user/detail?uid=${this.data.user.userId}`).then(res => {
-      this.setData({
-        userInfo: res.data
+    if (this.data.user) {
+      app.globalData.fly.get(`/user/detail?uid=${this.data.user.userId}`).then(res => {
+        this.setData({
+          userInfo: res.data,
+        })
+        // console.log(res)
+      }).catch(err => {
+        console.log(err)
       })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
-    //用户动态
-    app.globalData.fly.get(`/user/event?uid=${this.data.user.userId}`).then(res => {
-      this.setData({
-        events: res.data.events
+      //用户动态
+      app.globalData.fly.get(`/user/event?uid=${this.data.user.userId}`).then(res => {
+        this.setData({
+          events: res.data.events
+        })
+        // console.log(res)
+      }).catch(err => {
+        console.log(err)
       })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
-    //用户粉丝
-    app.globalData.fly.get(`/user/followeds?uid=${this.data.user.userId}`).then(res => {
-      this.setData({
-        fans: res.data.followeds
+      //用户粉丝
+      app.globalData.fly.get(`/user/followeds?uid=${this.data.user.userId}`).then(res => {
+        this.setData({
+          fans: res.data.followeds
+        })
+        // console.log(res)
+      }).catch(err => {
+        console.log(err)
       })
-      // console.log(res)
-    }).catch(err => {
-      console.log(err)
-    })
+    } else {
+      this.setData({
+        infolock: false
+      })
+    }
+
+
   },
-  login() {  //跳转登录
+  login() { //跳转登录
     wx.navigateTo({
       url: '../../pages/logs/logs',
     })
   },
-  skip(){ //跳转编辑资料
+  skip() { //跳转编辑资料
     wx.navigateTo({
       url: '../../pages/editInfo/editInfo',
     })
   },
-  logout() {  //退出登录
-      //用户详情
-      app.globalData.fly.get('/logout').then(res => {
-      if(res.data.code===200){
-        
+  logout() { //退出登录
+    //用户详情
+    app.globalData.fly.get('/logout').then(res => {
+      if (res.data.code === 200) {
+
         this.setData({
-          user: wx.getStorageSync("user")
+          infolock: false
         })
-        this.data.user = null
-        wx.setStorageSync("user",this.data.user)
+        wx.removeStorageSync('user')
       }
-        console.log(res)
-      }).catch(err => {
-        console.log(err)
-      })
+      // console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      user: wx.getStorageSync("user")
-    })
-    this.getUserInfo()
-    // console.log(this.data.user)
+    
   },
 
   /**
@@ -87,7 +102,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.setData({
+      user: wx.getStorageSync("user"),
+    })
+    // console.log(this.data.infolock)
+    this.getUserInfo()
+    if (wx.getStorageSync("user")) {
+      this.setData({
+        infolock: true
+      })
+    }
   },
 
   /**

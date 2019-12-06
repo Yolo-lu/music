@@ -5,16 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:0,
-    phone:'',
-    mail:'', //邮箱
-    password:'',// 密码
-    user:{}, //用户信息
-    passwords:'',
-    phoneLock:true,
+    active: 0,
+    phone: '',
+    mail: '', //邮箱
+    password: '', // 密码
+    user: {}, //用户信息
+    passwords: '',
+    phoneLock: true,
     passwordLock: true,
     passwordsLock: true,
-    mailLock:true
+    mailLock: true,
   },
   getPhone(e) {
     this.setData({
@@ -50,7 +50,7 @@ Page({
       return true
     }
   },
-  getPasswords(e){  //邮箱密码
+  getPasswords(e) { //邮箱密码
     this.setData({
       passwords: e.detail.value
     })
@@ -61,45 +61,48 @@ Page({
       return true
     }
   },
-  login(){ //点击登录 
-  //手机登录
-  if(this.data.active===0){
-    app.globalData.fly.get(`/login/cellphone?phone=${this.data.phone}&password=${this.data.password}`).then(res => {
-      this.setData({
-        user: res.data.profile
-      })
-      if (wx.getStorageSync('user')) {
-        wx.showToast({
-          title: '你已经登录过了哦',
+  login() { //点击登录 
+    //手机登录
+    if (this.data.active === 0) {
+      app.globalData.fly.get(`/login/cellphone?phone=${this.data.phone}&password=${this.data.password}`).then(res => {
+        this.setData({
+          user: res.data.profile
         })
-      } else {
-        wx.setStorageSync('user', this.data.user)
-      }
-    }).catch(err => {
-      console.log(err)
-    });
-  }else{
-    //邮箱登录
-    app.globalData.fly.get(`/login?email=${this.data.mail}&password=${this.data.passwords}`).then(res => {
-      this.setData({
-        user: res.data.profile
-      })
-      if (wx.getStorageSync('user')){
-        wx.showToast({
-          title: '你已经登录过来哦',
+        if (wx.getStorageSync('user')) {
+          wx.showToast({
+            title: '你已经登录过了哦',
+          })
+        } else {
+          wx.setStorageSync('user', this.data.user)
+        }
+      }).catch(err => {
+        console.log(err)
+      });
+    } else {
+      //邮箱登录
+      app.globalData.fly.get(`/login?email=${this.data.mail}&password=${this.data.passwords}`).then(res => {
+        this.setData({
+          user: res.data.profile,
         })
-      }else{
-        wx.setStorageSync('user', this.data.user)
-      }
-    }).catch(err => {
-      console.log(err)
-    });
-  }
-  wx.switchTab({
-    url: '../../pages/mine/mine',
-  })
+        if (wx.getStorageSync('user')) {
+          wx.showToast({
+            title: '你已经登录过来哦',
+          })
+        } else {
+          wx.setStorageSync('user', this.data.user)
+        }
+        wx.setStorageSync('userlock', this.data.infolock)
+      }).catch(err => {
+        console.log(err)
+      });
+    }
+   setTimeout(()=> {
+     wx.switchTab({
+       url: '../../pages/mine/mine',
+     })
+   }, 500)
   },
-  register(){  //点击注册
+  register() { //点击注册
     wx.navigateTo({
       url: '../../pages/register/register',
     })
@@ -107,58 +110,58 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function(options) {
+
   },
-  onChange(e){  //点击切换
+  onChange(e) { //点击切换
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-    
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    
+  onShow: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-    
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-    
+  onUnload: function() {
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-    
+  onPullDownRefresh: function() {
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-    
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    
+  onShareAppMessage: function() {
+
   }
 })
