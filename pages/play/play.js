@@ -1,9 +1,16 @@
 const app = getApp()
-Page({
+import create from '../../utils/create'
+import store from '../../store/index'
+create.Page(store,{
 
   /**
    * 页面的初始数据
    */
+  // use: ['songList', 'index', 'active'], //也支持复杂路径依赖，比如 ['list[0].name']
+  // // 计算属性，可以直接绑定在 wxml 里
+  // computed: {
+
+  // },
   data: {
     id: "", //传来的id
     songList: [], //取出存的歌单
@@ -19,77 +26,78 @@ Page({
     allTime: '',
     progress: '',
     active: 0, // 默认列表循环
-    shows:false,//默认播放列表弹出层关闭
+    shows: false,//默认播放列表弹出层关闭
     program: {}, //电台详情
-    djid:'',
-    songlock:false,
+    djid: '',
+    songlock: false,
     djlock: false
   },
   getData() {
     wx.showLoading({
       title: '加载中',
     })
-     if(this.data.id){
-       //歌曲详情
-       app.globalData.fly.get(`/song/detail?ids=${this.data.id}`).then(res => {
-         if (res.data) {
-           wx.hideLoading()
-           this.setData({
-             songDetail: res.data.songs,
-             title: res.data.songs[0].al.name,
-             songlock:true,
-             djlock:false
-           })
-          //  console.log(this.data.songDetail)
-           this.getUrl(this.data.id)
-         }
-       }).catch(err => {
-         console.log(err)
-         wx.hideLoading()
-       });
-     }
-     if(this.data.djid){
-       //电台详情
-       app.globalData.fly.get(`/dj/program/detail?id=${this.data.djid}`).then(res => {
-         if (res.data) {
-           wx.hideLoading()
-           this.setData({
-             program: res.data.program,
-             title: res.data.program.name,
-             songlock: false,
-             djlock: true
-           })
-           console.log(res)
-           this.getUrl(this.data.djid)
-         }
-       }).catch(err => {
-         console.log(err)
-         wx.hideLoading()
-       });
-     }
+    if (this.data.id) {
+      //歌曲详情
+      app.globalData.fly.get(`/song/detail?ids=${this.data.id}`).then(res => {
+        if (res.data) {
+          wx.hideLoading()
+          this.setData({
+            songDetail: res.data.songs,
+            title: res.data.songs[0].al.name,
+            songlock: true,
+            djlock: false
+          })
+          //  console.log(typeof this.data.id)
+          this.getUrl(this.data.id)
+        }
+      }).catch(err => {
+        console.log(err)
+        wx.hideLoading()
+      });
+    }
+    if (this.data.djid) {
+      //电台详情
+      app.globalData.fly.get(`/dj/program/detail?id=${this.data.djid}`).then(res => {
+        if (res.data) {
+          wx.hideLoading()
+          this.setData({
+            program: res.data.program,
+            title: res.data.program.name,
+            songlock: false,
+            djlock: true
+          })
+          console.log(res)
+          this.getUrl(this.data.djid)
+        }
+      }).catch(err => {
+        console.log(err)
+        wx.hideLoading()
+      });
+    }
   },
   getUrl(id) { //歌曲url
+  if(id){
     app.globalData.fly.get(`/song/url?id=${id}`).then(res => {
       res.data.data.map(item => {
-        if(item.url!==null){
+        if (item.url !== null) {
           this.setData({
             url: item.url
           })
-        }else{
+        } else {
           wx.showToast({
             title: '本首歌曲为VIP，请返回充值',
             icon: 'none',
             duration: 2000
           })
         }
-     
+
       })
       wx.playBackgroundAudio({
         dataUrl: res.data.data[0].url,
         // title: this.data.songDetail[0].al.name,
         // coverImgUrl: this.data.songDetail[0].al.picUrl
       })
-      console.log(res)
+      // console.log(res)
       let backgroundAudio = wx.getBackgroundAudioManager()
       backgroundAudio.src = this.data.url,
         backgroundAudio.title = this.data.title
@@ -105,14 +113,14 @@ Page({
           allTime: this.editTime(this.data.backgroundAudio.duration),
           progress: this.data.backgroundAudio.currentTime / this.data.backgroundAudio.duration * 100
         })
-        if(this.data.currentTimes===this.data.allTimes){
-          if(this.data.active===2){
+        if (this.data.currentTimes === this.data.allTimes) {
+          if (this.data.active === 2) {
             this.setData({
               id: this.data.id
             })
             this.getData();
             this.getUrl(id)
-          }else{
+          } else {
             this.next()
           }
         }
@@ -122,6 +130,8 @@ Page({
     }).catch(err => {
       console.log(err)
     });
+  }
+    
   },
   editTime(time) {
     let t = Math.round(time)
@@ -148,16 +158,18 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
-      id: options.id,
-      djid:options.djid,
+      id: Number(options.id) ,
+      djid: options.djid,
       songList: wx.getStorageSync('songList'),
       index: wx.getStorageSync('index')
+      // index: this.store.data.index,
+      // songList: this.store.data.songList,
     })
-    // console.log(this.data.djid)
     this.getData(),
-    wx.setStorageSync('active', this.data.active)
+      wx.setStorageSync('active', this.data.active) //存的
+      // this.store.data.active = this.data.active
   },
   play() { //播放
     this.setData({
@@ -177,14 +189,15 @@ Page({
       // console.log(this.data.index)
     } else {
       this.data.index++
-        if (this.data.index > this.data.songList.length - 1) {
-          this.data.index = 0
-        }
+      if (this.data.index > this.data.songList.length - 1) {
+        this.data.index = 0
+      }
     }
     this.setData({
       id: this.data.songList[this.data.index].id
     })
-    wx.setStorageSync('index', this.data.index)
+    wx.setStorageSync('index', this.data.index)// 存的
+    // this.store.data.index = this.data.index
     this.getData();
     this.getUrl()
   },
@@ -192,7 +205,7 @@ Page({
     if (this.data.active === 1) {
       this.data.index = Math.floor(Math.random() * this.data.songList.length)
       // console.log(this.data.index)
-    }else{
+    } else {
       this.data.index--
       if (this.data.index < this.data.songList.length - 1) {
         this.data.index = 0
@@ -201,7 +214,8 @@ Page({
     this.setData({
       id: this.data.songList[this.data.index].id
     })
-    wx.setStorageSync('index', this.data.index)
+    wx.setStorageSync('index', this.data.index)// 存的
+    // this.store.data.index = this.data.index
     this.getData();
     this.getUrl()
   },
@@ -209,71 +223,79 @@ Page({
     this.setData({
       active: 1,
     })
-    wx.setStorageSync('active', this.data.active)
+    wx.setStorageSync('active', this.data.active)// 存的
+    // this.store.data.active = this.data.active
   },
   only() { //点击单曲循环，切换到顺序播放
     this.setData({
       active: 0,
     })
-    wx.setStorageSync('active', this.data.active)
+    wx.setStorageSync('active', this.data.active) //存的
+    // this.store.data.active = this.data.active
   },
   random() { //点击随机播放，切换到单曲循环
     this.setData({
       active: 2,
     })
-    wx.setStorageSync('active', this.data.active)
+    wx.setStorageSync('active', this.data.active) //存的
+    // this.store.data.active = this.data.active
   },
-  playlist(){  //点击播放列表
+  playlist() {  //点击播放列表
     this.setData({
-      shows:!this.data.shows
+      shows: !this.data.shows
+    })
+  },
+  editshows(e) {
+    this.setData({
+      shows: e.detail
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

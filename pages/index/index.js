@@ -106,7 +106,7 @@ Page({
   },
   search() {  //搜索框获取焦点
     this.setData({
-      flag: !this.data.flag,
+      flag: false,
       lock:true,
     })
   },

@@ -93,7 +93,6 @@
   width: 50rpx;
   height: 50rpx;
   margin: auto;
-
 }
 .icon-name{
   font-size: 28rpx

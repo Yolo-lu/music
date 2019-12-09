@@ -1,5 +1,5 @@
 <view class="pop">
-<van-popup show="{{ show }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
+<van-popup show="{{ shows }}" position="bottom" custom-style="height: 60%;" bind:close="onClose" round>
   <view>
     <view class="head">
       <view class="left">
@@ -33,7 +33,7 @@
         <view class="ar {{indexs===index? 'red':''}}">-{{item.ar[0].name}}</view>
         </view>
         <view class="right1">
-        <van-icon name="cross" color="#999" />
+        <view catchtap="deleted" data-index="{{index}}"><van-icon name="cross" color="#999" /></view>
         </view>
       </view>
     </view>

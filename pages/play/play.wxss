@@ -1,5 +1,4 @@
 /* pages/play/play.wxss */
-.all{}
 .background{
   position: absolute;
   top:0;

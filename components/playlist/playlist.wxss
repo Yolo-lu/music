@@ -41,7 +41,9 @@
   display: flex
 }
 .name{
-  overflow: hidden
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
 }
 .ar{
   font-size: 24rpx;

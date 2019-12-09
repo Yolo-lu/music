@@ -1,5 +1,7 @@
 const app = getApp()
-Page({
+import create from '../../utils/create'
+import store from '../../store/index'
+create.Page(store,{
 
   /**
    * 页面的初始数据
@@ -24,6 +26,9 @@ Page({
             songList: res.data.playlist.tracks
           })
         }
+        wx.setStorageSync('songList', this.data.songList) //存的
+        // this.store.data.songList = this.data.songList
+        // console.log(this.store.data.songList)
       }
   //  console.log(res)
     }).catch(err => {
@@ -36,9 +41,10 @@ Page({
     this.setData({
       songList: this.data.songList
     })
-    // console.log(this.data.songList)
-    wx.setStorageSync('songList', this.data.songList)
-    wx.setStorageSync('index', e.currentTarget.dataset.index)
+ 
+
+    wx.setStorageSync('index', e.currentTarget.dataset.index) //存的
+    // this.store.data.index = e.currentTarget.dataset.index
         // console.log(wx.getStorageSync('songList')) 
     wx.navigateTo({
       url: `../../pages/play/play?id=${id}`,

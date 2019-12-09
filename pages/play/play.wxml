@@ -33,9 +33,7 @@
         <image src="../../images/next.png" bindtap="next"></image>
         <image src="../../images/playlist.png" bindtap="playlist"></image>
       </view>
-      <view wx:if="{{shows}}">
-        <playlist></playlist>
-      </view>
+      <playlist shows="{{shows}}" bind:editshows="editshows"></playlist>
     </view>
   </view>
 </view>

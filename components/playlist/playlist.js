@@ -4,14 +4,16 @@ Component({
    * 组件的属性列表
    */
   properties: {
-  
+  shows:{
+    type:Boolean,
+    value:false
+  }
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-    show:true,
     active:0,
     songList:[],//存的歌单
     indexs:0,//存的index
@@ -31,9 +33,7 @@ Component({
    */
   methods: {
     onClose() {
-      this.setData({
-        show:false
-      })
+      this.triggerEvent('editshows',false)
     },
     play(e) {  //跳转播放
       let id = e.currentTarget.dataset.item;
@@ -48,6 +48,14 @@ Component({
         url: `../../pages/play/play?id=${id}`,
       })
     },
+    deleted(e){
+      let index = e.currentTarget.dataset.index;
+      this.setData({
+        songList: wx.getStorageSync('songList')
+      })
+      let arr=this.data.songList
+      arr.splice(index,1)
+      wx.setStorageSync('songList', arr)
+    }
   },
-  
 })
