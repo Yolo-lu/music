@@ -41,7 +41,7 @@ Page({
         content: this.data.content.concat(res.data.programs),
         publishTime: this.data.publishTime,
       })
-      console.log(res)
+      // console.log(res)
     }).catch(err => {
       console.log(err)
     })

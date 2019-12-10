@@ -198,8 +198,8 @@ create.Page(store,{
     })
     wx.setStorageSync('index', this.data.index)// 存的
     // this.store.data.index = this.data.index
-    this.getData();
-    this.getUrl()
+    this.getData(this.data.id);
+    this.getUrl(this.data.id)
   },
   forword() { //上一首
     if (this.data.active === 1) {
@@ -207,8 +207,8 @@ create.Page(store,{
       // console.log(this.data.index)
     } else {
       this.data.index--
-      if (this.data.index < this.data.songList.length - 1) {
-        this.data.index = 0
+      if (this.data.index < 0) {
+        this.data.index = this.data.songList.length - 1
       }
     }
     this.setData({
@@ -216,8 +216,8 @@ create.Page(store,{
     })
     wx.setStorageSync('index', this.data.index)// 存的
     // this.store.data.index = this.data.index
-    this.getData();
-    this.getUrl()
+    this.getData(this.data.id);
+    this.getUrl(this.data.id)
   },
   order() { //点击顺序播放，切换到随机播放
     this.setData({

@@ -15,6 +15,7 @@ Page({
     passwordLock: true,
     passwordsLock: true,
     mailLock: true,
+    name:0,//控制标签页
   },
   getPhone(e) {
     this.setData({
@@ -63,7 +64,8 @@ Page({
   },
   login() { //点击登录 
     //手机登录
-    if (this.data.active === 0) {
+    if (this.data.name === 0) {
+      
       app.globalData.fly.get(`/login/cellphone?phone=${this.data.phone}&password=${this.data.password}`).then(res => {
         this.setData({
           user: res.data.profile
@@ -80,9 +82,10 @@ Page({
       });
     } else {
       //邮箱登录
+      console.log(this.data.active)
       app.globalData.fly.get(`/login?email=${this.data.mail}&password=${this.data.passwords}`).then(res => {
         this.setData({
-          user: res.data.profile,
+          user: res.data.account,
         })
         if (wx.getStorageSync('user')) {
           wx.showToast({
@@ -92,6 +95,7 @@ Page({
           wx.setStorageSync('user', this.data.user)
         }
         wx.setStorageSync('userlock', this.data.infolock)
+        console.log(res)
       }).catch(err => {
         console.log(err)
       });
@@ -111,10 +115,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
   },
   onChange(e) { //点击切换
-
+    this.setData({
+      name: e.detail.name
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
