@@ -80,10 +80,10 @@
             <view class="left2">
               <view class="index">{{index+1}}</view>
               <view class="songName">
-                <view class="names">{{item.al.name}}</view>
+                <view class="names">{{item.name}}</view>
                 <view class="bottem">
                   <view class="only">SQ</view>
-                  <view class="sum">{{item.name}}</view>
+                  <view class="sum">{{item.al.name}}</view>
                 </view>
               </view>
             </view>
@@ -111,10 +111,10 @@
         <view class="left2">
           <view class="index">{{index+1}}</view>
           <view class="songName">
-            <view class="names">{{item.al.name}}</view>
+            <view class="names">{{item.name}}</view>
             <view class="bottem">
               <view class="only">SQ</view>
-              <view class="sum">{{item.name}}</view>
+              <view class="sum">{{item.al.name}}</view>
             </view>
           </view>
         </view>

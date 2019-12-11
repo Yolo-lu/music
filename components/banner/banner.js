@@ -17,6 +17,7 @@ Component({
     circular: true, //衔接滑动
     interval: 5000,
     duration: 1000,
+    songList:[]
   },
   
   ready() {
@@ -35,7 +36,20 @@ Component({
       }).catch(err => {
         console.log(err)
       });
-    }
+    },
+    play(e) {  //跳转播放
+      let id = e.currentTarget.dataset.item;
+      this.setData({
+        songList: this.data.songList
+      })
+      // wx.setStorageSync('songList', this.data.songList)
+      // wx.setStorageSync('index', e.currentTarget.dataset.index)
+      // console.log(wx.getStorageSync('songList')) 
+      wx.navigateTo({
+        url: `../../pages/play/play?id=${id}`,
+      })
+    },
+
   },
 
 })

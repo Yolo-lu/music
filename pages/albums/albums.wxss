@@ -75,7 +75,7 @@ filter: blur(150rpx)
 }
 .icon{
   position: relative;
-  top:10rpx;
+  top:2rpx;
 }
 .description{
   font-size: 28rpx;
